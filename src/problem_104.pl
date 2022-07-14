@@ -3,7 +3,7 @@
 :- use_module(library(clpz)).
 
 list_length(L, N) :-
-    N #>= 0,
+    #N #>= 0,
     list_length(L, 0, N).
 
 list_length([], N, N).
