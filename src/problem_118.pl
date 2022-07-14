@@ -3,8 +3,8 @@
 :- use_module(library(clpz)).
 
 list_i_j_slice(A, I, J, S) :-
-    I #>= 1,
-    J #>= I,
+    #I #>= 1,
+    #J #>= I,
     I0 #= I - 1,
     list_i_j_slice_(A, I0, J, S).
 
