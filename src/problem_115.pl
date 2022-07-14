@@ -4,7 +4,7 @@
 
 list_n_duplicated(_, 0, []).
 list_n_duplicated(A, I, B) :-
-    I #> 0,
+    #I #> 0,
     list_n_i_duplicated(A, I, 0, B).
 
 list_n_i_duplicated([], _, _, []).
