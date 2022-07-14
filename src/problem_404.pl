@@ -12,8 +12,8 @@ list_btree_acc([A|B], T, T0) :-
 
 add(X, nil, t(X, nil, nil)).
 add(X, t(Root, L, R), t(Root, L1, R)) :-
-    X #< Root,
+    #X #< Root,
     add(X, L, L1).
 add(X, t(Root, L, R), t(Root, L, R1)) :-
-    X #> Root,
+    #X #> Root,
     add(X, R, R1).
