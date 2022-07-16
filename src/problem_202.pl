@@ -5,7 +5,7 @@
 
 n_factors(N, Fs) :-
     primes(Ps),
-    N #> 1,
+    #N #> 1,
     n_factors_primes(N, Fs, Ps),
     (   integer(N) -> !
     ;   true
