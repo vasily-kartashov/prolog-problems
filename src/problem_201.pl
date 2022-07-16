@@ -17,13 +17,11 @@ primes0(C, [D|Ds], Ps, T) :-
     ).
 
 prime_t(A, T) :-
-    must_be(var, A),
-    must_be((var;boolean), T),
+    var(A),
     primes(Ps),
     prime_t0(A, 2, Ps, T).
 prime_t(A, T) :-
-    must_be(integer, A),
-    must_be((var;boolean), T),
+    integer(A),
     A > 1,
     primes(Ps),
     prime_t1(A, Ps, T),
