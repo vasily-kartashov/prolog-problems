@@ -4,11 +4,16 @@
 :- use_module(library(reif)).
 
 gcd(A, B, C) :-
-    #C #> 0, #A #>= C, #B #>= C,
-    R #= A mod B,
+    #C #> 0, 
+    #A #>= C, 
+    #B #>= C,
     A mod C #= 0,
     B mod C #= 0,
+    gcd1(A, B, C).
+
+gcd1(A, B, C) :-
+    R #= A mod B,
     if_(  R = 0
        ,  C = B
-       ,  gcd(B, R, C)
+       ,  gcd1(B, R, C)
        ).
