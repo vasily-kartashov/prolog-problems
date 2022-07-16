@@ -1,11 +1,17 @@
-:- module(problem_102, [list_n_rnth/3]).
+:- module(problem_102, [rnth/3]).
 
-:- use_module(problem_103).
-:- use_module(problem_104).
 :- use_module(library(clpz)).
+:- use_module(library(lists)).
 
-list_n_rnth(A, I, E) :-
-    I #> 0,
-    list_length(A, L),
+rnth(A, I, E) :-
+    #I #> 0,
+    length(A, L),
     J #= L - I + 1,
-    list_n_nth(A, J, E).
+    J #> 0,
+    at(A, J, E).
+
+at([A|_], 1, A).
+at([_|T], I, A) :-
+    I #> 1,
+    I1 #= I - 1,
+    at(T, I1, A).
