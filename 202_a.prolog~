@@ -1,8 +1,0 @@
-:- use_module(library(clpz)).
-
-coprimes(_, []).
-coprimes(N, [P|Ps]) :-
-    N #> 1,
-    N mod P #\= 0,
-    coprimes(N, Ps),
-    coprimes(P, Ps).

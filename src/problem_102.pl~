@@ -1,8 +1,0 @@
-:- module(problem_102, [list_nth_last/2]).
-
-:- use_module(library(clpz)).
-
-list([A], 1, A).
-list([A|B], I, A) :-
-    list_length(B, I).
-    

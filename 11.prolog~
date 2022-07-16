@@ -1,5 +1,0 @@
-:- use_module(library(lists)).
-:- use_module(library(clpz))
-
-code_reduced([1,X], X).
-code_reduced([I,X], [I,X]) :- I #> 1.

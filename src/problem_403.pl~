@@ -1,6 +1,0 @@
-:- module(problem_403, [tree_mirrored/2]).
-
-tree_mirrored(nil, nil).
-tree_mirrored(t(A, B, C), t(A, C1, B1)) :-
-    tree_mirrored(B, B1),
-    tree_mirrored(C, C1).

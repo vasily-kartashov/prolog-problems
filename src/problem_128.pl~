@@ -1,9 +1,0 @@
-:- module(problem_128, [lsort/2]).
-
-:- use_module(library(lists)).
-:- use_module(library(pairs)).
-
-lsort(A, B) :-
-    map_list_to_pairs(length, A, P),
-    keysort(P, S),
-    pairs_values(S, B).

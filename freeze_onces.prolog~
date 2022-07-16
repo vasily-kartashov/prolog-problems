@@ -1,3 +1,0 @@
-:- use_module(library(freeze)).
-
-ones([1|T]) :- freeze(T, once(T)).

@@ -1,5 +1,0 @@
-table(true, true, C).
-table(true, fail, C).
-table(fail, true, C).
-table(fail, fail, c).
-    
