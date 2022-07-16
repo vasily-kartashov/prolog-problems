@@ -1,0 +1,36 @@
+:- module(problem_123, [pick/2, random_choice/2]).
+
+:- use_module(problem_104).
+:- use_module(problem_121).
+:- use_module(problem_122).
+:- use_module(library(random)).
+:- use_module(library(clpz)).
+
+pick(A, R) :-
+    list_length(A, L),
+    list_length(R, L),
+    random_choice(L, C),
+    list_index_applied(A, C, R).
+
+list_index_applied(_, [], []).
+list_index_applied(A, [I|J], [R|T]) :-
+    list_item_at_inserted(A1, R, I, A),
+    list_index_applied(A1, J, T).
+
+random_choice(N, C) :-
+    random_choice_generator(N, C, 1).
+
+random_choice_generator(N, C, _) :-
+    random_choice_iter(N, C).
+random_choice_generator(N, C, I) :-
+    I1 is I + 1,
+    random_choice_generator(N, C, I1).
+
+random_choice_iter(0, []).
+random_choice_iter(N, [A|T]) :-
+    N #> 0,
+    L #= N + 1,
+    random_integer(1, L, A),
+    N1 #= N - 1,
+    random_choice_iter(N1, T).
+

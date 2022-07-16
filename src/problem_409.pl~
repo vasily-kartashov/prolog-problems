@@ -1,0 +1,13 @@
+:- module(problem_409, [tree_leaves/2]).
+
+:- use_module(problem_401).
+
+tree_leaves(t(A, nil, nil), [A]).
+tree_leaves(t(A, B, nil), L) :-
+    tree_leaves(B, L).
+tree_leaves(t(A, nil, B), L) :-
+    is_tree(B),
+    tree_leaves(B, L).
+tree_leaves(t(A, B, C), L) :-
+    
+    

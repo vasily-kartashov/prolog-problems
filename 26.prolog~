@@ -1,0 +1,4 @@
+:- use_module(library(clpz)).
+
+list_n_choice(A, 0, []).
+list_n_choice([], I, []) :- I #> 0.

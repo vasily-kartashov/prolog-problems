@@ -1,0 +1,15 @@
+:- module(problem_127, [group/3]).
+
+:- use_module(problem_126).
+
+group(A, N, G) :-
+    length(A, M),
+    group(A, M, N, G).
+
+group(_, _, [], []).
+group(A, M, [N|T], [S|U]) :-
+    M #>= N
+    choose(A, M, S, A1),
+    M1 #= M - N,
+    group(A1, M1, T, U).
+

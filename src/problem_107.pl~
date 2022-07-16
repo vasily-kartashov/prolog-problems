@@ -1,0 +1,9 @@
+:- module(problem_107, [flatten/2]).
+
+flatten(A, B) :-
+    true.
+
+ 
+flat([]).
+	
+    

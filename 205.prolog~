@@ -1,0 +1,7 @@
+goldbach(A, [B,C]) :-
+    integer(A),
+    A2 is A // 2,
+    primes_below(A2, Ps),
+    member(B, Ps),
+    member(C, Ps),
+    B + C =:= A.

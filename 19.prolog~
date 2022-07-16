@@ -1,0 +1,9 @@
+:- use_module(library(clpz)).
+:- use_module(library(lists)).
+
+list_n_rotated([], _, []).
+list_n_rotated(A, 0, A).
+list_n_rotated(A, I, R) :-
+    I #> 0,
+    list_split(A, I, P, S),
+    append(S, P, R).

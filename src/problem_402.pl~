@@ -1,0 +1,3 @@
+:- module(problem_402, [balanced_tree/2]).
+
+balanced_tree(0, nil).

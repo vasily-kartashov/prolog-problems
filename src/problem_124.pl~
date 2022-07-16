@@ -1,0 +1,2 @@
+:- module(problem_124, [draw_n/3]).
+

@@ -15,11 +15,10 @@ lfsort(A, B) :-
     keysort(G, S),
     pairs_values(S, G1),
     map_list_to_pairs(length, G1, P2),
-    write(P2), nl,
     keysort(P2, P3),
     pairs_values(P3, B0),
     flatten(B0, B).
 
 flatten([], []).
-flatten([[]|T], B) :- flatten(T, B).
+flatten([[A]|T], [A|U]) :- flatten(T, U).
 flatten([[A|U]|T], [A|B]) :- flatten([U|T], B).

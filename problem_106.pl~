@@ -1,0 +1,2 @@
+palindrome(A) :-
+    list_reversed(A, A).

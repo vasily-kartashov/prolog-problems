@@ -1,0 +1,10 @@
+:- module(problem_401, [is_tree/1]).
+
+is_tree(t(_, nil, nil)).
+is_tree(t(_, A, nil)) :-
+    is_tree(A). 
+is_tree(t(_, _, B)) :-
+    is_tree(B).
+is_tree(t(_, A, B)) :-
+    is_tree(A),
+    is_tree(B).

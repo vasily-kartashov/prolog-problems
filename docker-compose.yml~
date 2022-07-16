@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  app:
+    build: ../scryer-prolog
+    volumes:
+      - .:/src
+    working_dir: /src
+    entrypoint: scryer-prolog

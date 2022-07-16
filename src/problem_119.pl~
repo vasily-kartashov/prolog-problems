@@ -1,0 +1,11 @@
+:- use_module(library(clpz)).
+:- use_module(library(lists)).
+
+list_n_rotated([], _, []).
+list_n_rotated(A, 0, A).
+list_n_rotated(A, I, R) :-
+    I #\= 0,
+    list_length(A, L),
+    I1 #= I mod L,
+    list_n_prefix_suffix(A, I1, P, S),
+    append(S, P, R).

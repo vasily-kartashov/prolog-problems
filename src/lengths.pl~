@@ -1,0 +1,15 @@
+:- use_module(library(clpz)).
+
+list_length1([], 0).
+list_length1([_|T], N) :-
+    N #> 0,
+    N1 #= N - 1,
+    list_length1(T, N).
+
+list_length2(A, N) :-
+    list_length2(A, 0, N).
+
+list_length2([], N, N).
+list_length2([_|T], I, N) :-
+    I1 #= I + 1,
+    list_length2(T, I1, N).

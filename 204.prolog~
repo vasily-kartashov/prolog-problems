@@ -1,0 +1,10 @@
+:- use_module(library(clpz)).
+
+prime_range(A, B, R) :-
+    A #=< B,
+    if_( prime_t(A)
+       , ( R = [A|T], A1 #= A + 2, prime_range(A1, B, T) )
+       , ( A1 #= A + 1, prime_range(A1, B, R) )
+       ).
+prime_range(A, B, []) :-
+    A #> B.

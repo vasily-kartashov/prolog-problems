@@ -1,0 +1,31 @@
+:- use_module(library(reif)).
+
+n_factors(N, Fs) :-
+    primes(Ps),
+    zcompare(C, N, 1),
+    n_factors0(C, N, Fs, Ps).
+
+n_factors0(>, N, Fs, Ps) :-
+    if_( prime_t(N)
+       , ( Fs = [F], ! )
+       , 
+    integer(N),
+    N > 1,
+    primes(Ps),
+    n_factors0(N, Ps, Fs).
+
+
+
+
+n_factors0(1, _, []) :- !.
+n_factors0(N, [P|Ps], Fs) :-
+    write([N, P, Fs]), nl,
+    N > 1,
+    (  N mod P =:= 0
+    -> Fs = [P|Fs1], N1 is N // P, n_factors0(N1, [P|Ps], Fs1)
+    ;  (  P * P > N
+       -> Fs = [N], !
+       ;  n_factors0(N, Ps, Fs)
+       )
+    ),
+    !.

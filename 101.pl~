@@ -1,0 +1,3 @@
+list_last([X], X).
+list_last([_|T], X) :- list_last(T, X).
+
