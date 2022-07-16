@@ -4,8 +4,8 @@
 :- use_module(library(clpz)).
 
 range_primes(A, B, R) :-
-    #A #=< #B,
     primes(Ps),
+    #A #=< #B,
     range_primes(A, B, R, Ps).
 
 range_primes(A, B, T, [P|U]) :-
