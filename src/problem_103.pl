@@ -1,9 +1,9 @@
-:- module(problem_103, [list_n_nth/3]).
-    
+:- module(problem_103, [nth/3]).
+
 :- use_module(library(clpz)).
 
-list_n_nth([A|_], 1, A).
-list_n_nth([_|T], N, A) :- 
-    #N #> 1, 
-    N1 #= N - 1, 
-    list_n_nth(T, N1, A).
+nth(1, [A|_], A).
+nth(I, [_|T], A) :- 
+    #I #> 1, 
+    I1 #= I - 1, 
+    nth(I1, T, A).
