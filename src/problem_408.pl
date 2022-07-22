@@ -4,42 +4,30 @@
 
 count_leaves(nil, 0).
 count_leaves(t(_, nil, nil), 1).
-count_leaves(t(_, A, nil), N) :-
-    A = t(_, _, _),
+count_leaves(t(_, t(A, B, C), nil), N) :-
     N #> 0,
-    count_leaves(A, N).
-count_leaves(t(_, nil, B), N) :-
-    B = t(_, _, _),
+    count_leaves(t(A, B, C), N).
+count_leaves(t(_, nil, t(A, B, C)), N) :-
     N #> 0,
-    count_leaves(B, N).
-count_leaves(t(_, A, B), N) :-
-    A = t(_, _, _),
-    B = t(_, _, _),
+    count_leaves(t(A, B, C), N).
+count_leaves(t(_, t(A0, B0, C0), t(A1, B1, C1)), N) :-
     N #> 1,
     L #> 0,
     R #> 0,
     N #= L + R,
-    count_leaves(A, L),
-    count_leaves(B, R).
+    count_leaves(t(A0, B0, C0), L),
+    count_leaves(t(A1, B1, C1), R).
 
-depth(nil, 0).
-depth(t(_, nil, nil), 1).
-depth(t(_, A, nil), N) :-
-    A = t(_, _, _),
-    N #> 1,
-    N1 #= N - 1,
-    depth(A, N1).
-depth(t(_, nil, B), N) :-
-    B = t(_, _, _),
-    N #> 1,
-    N1 #= N - 1,
-    depth(B, N1).
-depth(t(_, A, B), N) :-
-    A = t(_, _, _),
-    B = t(_, _, _),
-    N #> 1,
-    L #> 0,
-    R #> 0,
-    N #= 1 + max(L, R),
-    depth(A, L),
-    depth(B, R).
+depth(A, T) :-
+    T #>= 0,
+    depth(A, 0, T).
+
+depth(nil, N, N).
+depth(t(_, A, B), N0, N) :-
+    N0 #=< N,
+    N1 #= N0 + 1,
+    L #>= 0,
+    R #>= 0,
+    N #= max(L, R),
+    depth(A, N1, L),
+    depth(B, N1, R).
