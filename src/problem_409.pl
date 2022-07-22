@@ -1,6 +1,5 @@
 :- module(problem_409, [tree_leaves/2]).
 
-:- use_module(library(dif)).
 :- use_module(library(lists)).
 
 tree_leaves(nil, []).
