@@ -1,6 +1,6 @@
 :- module(problem_408, [count_leaves/2, depth/2]).
 
-:- use_module(library(clpz)).
+:- use_module(library(clpfd)).
 
 count_leaves(nil, 0).
 count_leaves(t(_, nil, nil), 1).
@@ -18,16 +18,11 @@ count_leaves(t(_, t(A0, B0, C0), t(A1, B1, C1)), N) :-
     count_leaves(t(A0, B0, C0), L),
     count_leaves(t(A1, B1, C1), R).
 
-depth(A, T) :-
-    T #>= 0,
-    depth(A, 0, T).
-
-depth(nil, N, N).
-depth(t(_, A, B), N0, N) :-
-    N0 #=< N,
-    N1 #= N0 + 1,
+depth(nil, 0).
+depth(t(_, A, B), N) :-
+    N #> 0,
     L #>= 0,
     R #>= 0,
-    N #= max(L, R),
-    depth(A, N1, L),
-    depth(B, N1, R).
+    N #= 1 + max(L, R),
+    depth(A, L),
+    depth(B, R).
