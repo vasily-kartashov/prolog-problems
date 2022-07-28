@@ -3,15 +3,15 @@
 :- use_module(library(dcgs)).
 
 tree_signature(T, S) :-
-    phrase(tree_signature_(T), S).
+    phrase(tree_signature(T), S).
 
-tree_signature_(t(A, B)) -->
+tree_signature(t(A, B)) -->
     [A],
-    children_signature_(B),
+    children_signature(B),
     "^".
 
-children_signature_([]) -->
+children_signature([]) -->
     "".
-children_signature_([A|T]) -->
-    tree_signature_(A),
-    children_signature_(T).
+children_signature([A|T]) -->
+    tree_signature(A),
+    children_signature(T).
