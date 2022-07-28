@@ -9,22 +9,14 @@ tree_string(nil) -->
     "".
 tree_string(t(A,nil,nil)) -->
     [A].
-tree_string(t(A,t(B,C,D),nil)) -->
+tree_string(t(A,B,C)) -->
+    {  B = t(_, _, _), C = nil
+    ;  B = t(_, _, _), C = t(_, _, _)
+    ;  B = nil,        C = t(_, _, _)
+    },
     [A],
     "(",
-    tree_string(t(B,C,D)),
+    tree_string(B),
     ",",
-    ")".
-tree_string(t(A,nil,t(B,C,D))) -->
-    [A],
-    "(",
-    ",",
-    tree_string(t(B,C,D)),
-    ")".
-tree_string(t(A,t(B,C,D),t(E,F,G))) -->
-    [A],
-    "(",
-    tree_string(t(B,C,D)),
-    ",",
-    tree_string(t(E,F,G)),
+    tree_string(C),
     ")".
