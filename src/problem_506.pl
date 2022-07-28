@@ -1,4 +1,4 @@
-:- module(problme_506, [tree_ltl/2]).
+:- module(problem_506, [tree_ltl/2]).
 
 :- use_module(library(dcgs)).
 
