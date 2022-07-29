@@ -10,15 +10,13 @@ huffman(F, H) :-
 reduce([A], [A]).
 reduce([I-L,J-H|T], P) :-
     K #= I + J,
-    prefix(L, '0', L1),
-    prefix(H, '1', H1),
+    maplist(prefix('0'), L, L1),
+    maplist(prefix('1'), H, H1),
     append(L1, H1, S),
     plist(T, K-S, T1),
     reduce(T1, P).
 
-prefix([], _, []).
-prefix([C-H|T], B, [C-[B|H]|T1]) :-
-    prefix(T, B, T1).
+prefix(B, C-H, C-[B|H]).
 
 flist_plist(F, P) :-
     foldl(plist_append, F, [], P). 
