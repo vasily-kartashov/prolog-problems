@@ -29,5 +29,3 @@ number(I, [_,_,_|L0], L) -->
     number(J, L0, L),
     ['-'],
     digit(R).
-
-
