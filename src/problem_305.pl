@@ -22,5 +22,4 @@ flist_plist(F, P) :-
     foldl(plist_append, F, [], P). 
 
 plist_append(fr(A,I), P0, P) :-
-    I1 #= -I,
-    plist(P0, I1-[A-[]], P).
+    plist(P0, I-[A-[]], P).
