@@ -4,7 +4,7 @@
 :- use_module(library(dcgs)).
 
 number_words(N, S) :-
-    phrase(number(N, S, _), S).
+    phrase(number(N, S), S).
 
 digit(0) --> "zero".
 digit(1) --> "one".
@@ -17,15 +17,15 @@ digit(7) --> "seven".
 digit(8) --> "eight".
 digit(9) --> "nine".
 
-number(I, L, L) -->
+number(I, _) -->
     { #I #< 10 },
     digit(I).
 
-number(I, [_,_,_|L0], L) -->
+number(I, [_,_,_|L]) -->
     {   #I #> 9
     ,   R #= I mod 10
     ,   J #= I // 10
     },
-    number(J, L0, L),
+    number(J, L),
     ['-'],
     digit(R).
