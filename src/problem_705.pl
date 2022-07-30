@@ -18,13 +18,13 @@ digit(8) --> "eight".
 digit(9) --> "nine".
 
 number(I, L, L) -->
-    { I #< 10 },
+    { #I #< 10 },
     digit(I).
 
 number(I, [_,_,_|L0], L) -->
-    { I #> 9,
-      R #= I mod 10,
-      J #= I // 10
+    {   #I #> 9,
+        R #= I mod 10,
+        J #= I // 10
     },
     number(J, L0, L),
     ['-'],
