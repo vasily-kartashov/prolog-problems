@@ -3,6 +3,8 @@
 :- use_module(library(lists)).
 
 path(graph(Nodes, Edges), A, B, P, D) :-
+    member(A, Nodes),
+    member(B, Nodes),
     path(graph(Nodes, Edges), A, B, [], P, D).
 
 path(graph(_, _), A, A, _, [A], 0).
