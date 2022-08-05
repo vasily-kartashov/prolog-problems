@@ -8,8 +8,8 @@ cycle(graph(Nodes, Edges), A, Path) :-
 
 cycle(Edges, A, B, V, [B|T]) :-
     member(a(B, C, _), Edges),
-    \+ member(C, V),
     (   C = A ->
-        T = [A]
-    ;   cycle(Edges, A, C, [C|V], T)
+	T = [A]
+    ;   \+ member(C, V),
+        cycle(Edges, A, C, [C|V], T)
     ).
