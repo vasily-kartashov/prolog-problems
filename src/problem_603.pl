@@ -13,5 +13,3 @@ cycle(Edges, A, B, V, [B|T]) :-
         T = [A]
     ;   cycle(Edges, A, C, [C|V], T)
     ).
-
-    
