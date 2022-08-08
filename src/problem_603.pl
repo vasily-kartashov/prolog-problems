@@ -10,6 +10,7 @@ cycle(Edges, A, B, V, [B|T]) :-
     member(a(B, C, _), Edges),
     (   C = A ->
 	T = [A]
-    ;   \+ member(C, V),
-        cycle(Edges, A, C, [C|V], T)
+    ;   member(C, V) ->
+	fail
+    ;   cycle(Edges, A, C, [C|V], T)
     ).
