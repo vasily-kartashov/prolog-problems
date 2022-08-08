@@ -5,11 +5,11 @@
 path(graph(Nodes, Edges), A, B, P, D) :-
     member(A, Nodes),
     member(B, Nodes),
-    path(Edges, A, B, [], P, D).
+    path(Edges, A, B, [], P, 0, D).
 
-path(Edges, A, A, _, [A], 0).
-path(Edges, A, B, V, [A|T], D) :-
-    member(a(A, C, D0), Edges),
+path(_, A, A, _, [A], D, D).
+path(Edges, A, B, V, [A|T], D0, D) :-
+    member(a(A, C, D1), Edges),
     \+ member(C, V),
-    path(Edges, C, B, [A|V], T, D1),
-    D is D0 + D1.
+    D2 is D0 + D1,
+    path(Edges, C, B, [A|V], T, D2, D).
