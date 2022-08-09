@@ -6,13 +6,13 @@
 s_tree(graph(Nodes, Edges), Tree, Sum) :-
     member(A, Nodes),
     ord_del_element(Nodes, A, Nodes0),
-    s_tree(A, Nodes0, [], Edges, Tree, Sum).
+    s_tree(A, Nodes0, [], Edges, Tree, 0, Sum).
 
-s_tree(A, Nodes, Nodes, _, t(A, []), 0).
-s_tree(A, Nodes, Nodes2, Edges, t(A, [T|Children]), Sum) :-
+s_tree(A, Nodes, Nodes, _, t(A, []), Sum, Sum).
+s_tree(A, Nodes, Nodes2, Edges, t(A, [T|Children]), Sum0, Sum) :-
     member(B, Nodes),
     member(a(A, B, W), Edges),
     ord_del_element(Nodes, B, Nodes0),
-    s_tree(B, Nodes0, Nodes1, Edges, T, Sum1),
-    s_tree(A, Nodes1, Nodes2, Edges, t(A, Children), Sum2),
-    Sum is Sum1 + Sum2 + W.
+    Sum1 is Sum0 + W,
+    s_tree(B, Nodes0, Nodes1, Edges, T, Sum1, Sum2),
+    s_tree(A, Nodes1, Nodes2, Edges, t(A, Children), Sum2, Sum).
