@@ -13,5 +13,6 @@ s_tree(A, Nodes, Nodes2, Edges, t(A, [T|Children])) :-
     member(B, Nodes),
     member(a(A, B, _), Edges),
     ord_del_element(Nodes, B, Nodes0),
-    s_tree(A, Nodes0, Nodes1, Edges, t(A, Children)),
-    s_tree(B, Nodes1, Nodes2, Edges, T).
+    s_tree(B, Nodes0, Nodes1, Edges, T),
+    s_tree(A, Nodes1, Nodes2, Edges, t(A, Children)).
+
