@@ -12,7 +12,7 @@ ms_tree(graph(Nodes, Edges), Tree, Sum) :-
 
 ms_tree(_, _, [], Tree, Tree, Sum, Sum).
 ms_tree(Edges, Visited, Outstanding, Tree0, Tree, Sum0, Sum) :-
-    plist(Edges1, D-(A-B), Edges),
+    select(D-(A-B), Edges, Edges1),
     member(A, Visited),
     select(B, Outstanding, Outstanding1),
     tree_add(Tree0, A-B, Tree1),
