@@ -1,4 +1,4 @@
-:- module(problem_605, [ms_tree/3, tree_add/3]).
+:- module(problem_605, [ms_tree/3]).
 
 :- use_module(plist).
 :- use_module(library(dif)).
