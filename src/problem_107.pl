@@ -1,16 +1,19 @@
-:- module(problem_107, [flatten/2]).
+:- module(problem_107, [my_flatten/2]).
+
+% I think this can be solved more elegantly by stating how many pair of [] we need to distribute over F
+% thus regularizing the solutionx
 
 :- use_module(library(lists)).
 
-flatten([], []).
-flatten([A|T], F) :-
+my_flatten([], []).
+my_flatten([A|T], F) :-
     is_list(A),
     !,
-    flatten(A, B),
-    flatten(T, C),
+    my_flatten(A, B),
+    my_flatten(T, C),
     append(B, C, F).
-flatten([A|T], [A|F]) :-
-    flatten(T, F).
+my_flatten([A|T], [A|F]) :-
+    my_flatten(T, F).
 
 is_list(A) :-
     var(A), !, fail.
