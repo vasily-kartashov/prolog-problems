@@ -1,17 +1,15 @@
-:- module(problem_116, [list_nth_dropped/3]).
+:- module(problem_116, [drop/3]).
 
-:- use_module(problem_104).
 :- use_module(library(clpz)).
 
-list_nth_dropped(A, N, R) :-
+drop(A, N, R) :-
     N #> 0,
-    list_i_nth_dropped(A, 1, N, R).
+    drop(A, 1, N, R).
 
-list_i_nth_dropped([], _, _, []).
-list_i_nth_dropped([A|T], I, N, [A|R]) :-
+drop([], _, _, []).
+drop([A|T], I, N, [A|R]) :-
     I #< N,
     I1 #= I + 1,
-    list_i_nth_dropped(T, I1, N, R).
-list_i_nth_dropped([_|T], N, N, R) :-
-    list_i_nth_dropped(T, 1, N, R).
-
+    drop(T, I1, N, R).
+drop([_|T], N, N, R) :-
+    drop(T, 1, N, R).
