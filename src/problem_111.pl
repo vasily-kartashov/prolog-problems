@@ -9,10 +9,9 @@ encode_modified([A,B|T], [A|E]) :-
     dif(A, B),
     encode_modified([B|T], E).
 encode_modified([A,A|T], [[A,N]|E]) :-
+    N #> 2,
     N1 #= N - 1,
-    N1 #> 1,
     encode_modified([A|T], [[A,N1]|E]).
-encode_modified([A,A|T], [[A,N]|E]) :-
-    N1 #= N - 1,
-    N1 #= 1,
+encode_modified([A,A|T], [[A,2]|E]) :-
     encode_modified([A|T], [A|E]).
+
