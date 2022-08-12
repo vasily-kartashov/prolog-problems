@@ -25,4 +25,3 @@ test(rnth1, all(I-A == [3-a,2-b,1-c])) :-
     rnth1(I, [a,b,c], A).
 
 :- end_tests(problem_102).
-
