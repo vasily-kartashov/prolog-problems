@@ -15,4 +15,3 @@ test(my_last, [nondet]) :-
     my_last([B|T], L).
 
 :- end_tests(problem_101).
-
